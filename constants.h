@@ -70,7 +70,7 @@
 #endif
 
 // Should be the date of this firmware release, in hex, in the following format: 0xYYYYMMDD
-#define DEVICE_VERSION  0x20120809
+#define DEVICE_VERSION  0x20120816
 
 #define EEPROM_VERSION  6  // Increment this when the eeprom layout requires
                            // resetting to the factory default.

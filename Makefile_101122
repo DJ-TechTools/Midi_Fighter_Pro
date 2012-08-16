@@ -201,9 +201,9 @@ CDEFS += -DFOURBANKS_LED
 CDEFS += -DCOMBO
 
 # Cuemaster (00020000)
- CDEFS += -DTRAKTOR_H
+CDEFS += -DTRAKTOR_H
 # Beatmasher (00020001)
-# CDEFS += -DTRAKTOR_V
+#CDEFS += -DTRAKTOR_V
 # Super knobs (00020002)
 # CDEFS += -DSERATO
 # XX Fader (identical to Cuemaster!) (00020000)

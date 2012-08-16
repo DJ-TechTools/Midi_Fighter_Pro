@@ -3,27 +3,6 @@
 //   Copyright (C) 2009-2011 Robin Green
 //
 // rgreen 2010-10-27
-//
-// Version History
-//   0.10: Based on LUFA090401.
-//   0.10: MIDI being generated, solved blocking on unresponsive host.
-//         Convert to LUFA 090510.
-//   0.11: Added ADC, tests correctly.
-//   0.12: Drop to Bootloader from menu option.
-//         Moved MIDI and ADC to their own headers.
-//         Removed LED intensity for new chip.
-//   0.13: Updated code to work with LUFA090924.
-//   0.14: Updated code to work with LUFA091122.
-//   0.15: Converted analog ins to smart knobs.
-//   0.16: Added Fourbanks mode.
-//   0.17: Converted to LUFA 101122 using High Level MIDI drivers.
-//   0.18: Fourbanks tracks MIDI inputs correctly.
-//         Menu basenote updated to handle Fourbanks mode.
-//   0.19: Removed MIDI basenote, fixed MIDI map to be consistent.
-//   0.20: Added Fourbanks Internal and External modes and menu items.
-//   0.21: Added combo key matching
-//   0.22: Added external keys and leds for Midifighter Pro.
-//   0.23: Added support for new bootloader
 
 #include <stdbool.h>
 #include <stdlib.h>
@@ -683,7 +662,7 @@ void Midifighter_Task(void)
             uint8_t note = midi_fourbanks_key_to_note(i + keyoffset);
 			if (g_device_mode == ABLETON)
 			{
-				midi_stream_cc(note,127);			
+				midi_stream_raw_cc(g_midi_channel+1,note,127);			
 			}			
             midi_stream_note(note, true);
         }
@@ -693,7 +672,7 @@ void Midifighter_Task(void)
             midi_stream_note(note, false);
 			if (g_device_mode == ABLETON)
 			{
-				midi_stream_cc(note,0);			
+				midi_stream_raw_cc(g_midi_channel+1,note,0);			
 			}			
         }
         bit <<= 1;
